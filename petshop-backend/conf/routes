@@ -7,5 +7,11 @@ GET     /                           controllers.Application.index()
 POST    /person                     controllers.Application.addPerson()
 GET     /persons                    controllers.Application.getPersons
 
+GET     /pets                       controllers.PetController.getPets
+POST    /addPetWithForm             controllers.PetController.addPetWithForm()
+POST    /addPet                     controllers.PetController.addPet()
+PUT     /updatePet/:id              controllers.PetController.updatePet(id)
+DELETE  /removePet/:id              controllers.PetController.deletePet(id)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

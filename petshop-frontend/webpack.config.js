@@ -20,7 +20,7 @@ module.exports = {
 				test: /\.jsx$/,
 				exclude: /node_modules/,
 				include: path.join(__dirname, "app"),
-				loaders: ["react-hot", "babel?presets[]=react,presets[]=es2015"],
+				loaders: ["react-hot", "babel"],
 			},
 			{
 				test: /\.js$/,
