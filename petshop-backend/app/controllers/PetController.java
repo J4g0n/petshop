@@ -43,7 +43,7 @@ public class PetController extends Controller {
             }
         }
 
-        return redirect(routes.Application.index());
+        return getPets();
     }
 
     @Transactional

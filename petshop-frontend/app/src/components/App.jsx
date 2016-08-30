@@ -1,7 +1,8 @@
 import React from 'react';
 import _ from 'lodash';
-import { getPets } from '../repositories/petRepository';
+import { getPets, addPet } from '../repositories/petRepository';
 import PetList from './PetList.jsx';
+import PetForm from './PetForm.jsx';
 
 class App extends React.Component {
 	constructor(props) {
@@ -17,12 +18,32 @@ class App extends React.Component {
         });
 	}
 
-    renderPetForm() {
-        /*return (
-            <PetForm
+    addPet() {
+        const { newPetName } = this.state;
+        console.log("Name saved: ", newPetName);
+        addPet(newPetName).then(jsonValue => {
+            this.setState({
+                "pets": jsonValue
+            });
+        });
+    }
 
+    onChangeName(event) {
+        console.log("Name changed: ", event.target.value);
+        this.setState({
+            "newPetName": event.target.value
+        });
+    }
+
+    renderPetForm() {
+        const { newPetName } = this.state;
+        return (
+            <PetForm
+                name={newPetName}
+                onSubmit={this.addPet.bind(this)}
+                onChangeName={this.onChangeName.bind(this)}
             />
-        );*/
+        );
     }
 
 	maybeRenderPets(pets) {

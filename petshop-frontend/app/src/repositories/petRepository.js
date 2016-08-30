@@ -2,19 +2,19 @@ import 'whatwg-fetch';
 import { baseUrl } from '../config';
 
 
-export const addPet = (data) => {
-    fetch(baseUrl + "addPet", {
+export const addPet = (name) => {
+    return fetch("http://localhost:9000/addPet", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(data),
-        mode: "no-cors"
+        body: JSON.stringify({ "name": name }),
+        mode: "cors"
     }).then(
-        (response) => {
-            console.debug(response);
+        response => {
+            return response.json();
         },
-        (error) => {
+        error => {
             console.error(error);
         }
     );
@@ -22,13 +22,17 @@ export const addPet = (data) => {
 
 export const getPets = () => {
     return fetch("http://localhost:9000/pets", {
-            method: "GET",
-            headers: {
-                //'Accept': 'application/json',
-                "Content-Type": "application/json"
-            },
-            mode: "cors"
-    }).then(response => {
-        return response.json();
-    });
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        mode: "cors"
+    }).then(
+        response => {
+            return response.json();
+        },
+        error => {
+            console.error(error);
+        }
+    );
 };
