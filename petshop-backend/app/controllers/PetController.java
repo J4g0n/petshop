@@ -71,7 +71,7 @@ public class PetController extends Controller {
             }
         }
 
-        return redirect(routes.Application.index());
+        return getPets();
     }
 
     @Transactional
@@ -83,7 +83,7 @@ public class PetController extends Controller {
         // we can also use the same entity manager for every CRUD actions
         // see http://stackoverflow.com/questions/20328740/can-not-refresh-not-managed-object
         JPA.em().remove(JPA.em().merge(pet));
-        return redirect(routes.Application.index());
+        return getPets();
     }
 
     @Transactional(readOnly = true)

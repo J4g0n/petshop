@@ -3,9 +3,10 @@ import _ from 'lodash';
 
 class PetList extends React.Component {
 	renderPets(pets) {
+	    const { onDeletePet } = this.props;
         return (
             _.map(pets, (pet) => {
-                return <li key={pet.id}>{pet.name}</li>;
+                return <li key={pet.id}>{pet.name} <button onClick={() => onDeletePet(pet.id)}>Supprimer</button></li>;
             })
         );
     }
@@ -19,5 +20,10 @@ class PetList extends React.Component {
         );
 	}
 }
+
+PetList.propTypes = {
+    pets: React.PropTypes.array.isRequired, // todo use proptypes.shape to enforce type here
+    onDeletePet: React.PropTypes.func.isRequired
+};
 
 export default PetList

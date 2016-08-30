@@ -3,7 +3,8 @@ import { baseUrl } from '../config';
 
 
 export const addPet = (name) => {
-    return fetch("http://localhost:9000/addPet", {
+    const url = baseUrl + "addPet";
+    return fetch(url, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -20,8 +21,27 @@ export const addPet = (name) => {
     );
 };
 
+export const deletePet = (id) => {
+    const url = baseUrl + "removePet/" + id;
+    return fetch(url, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        mode: "cors"
+    }).then(
+        response => {
+            return response.json();
+        },
+        error => {
+            console.error(error);
+        }
+    );
+};
+
 export const getPets = () => {
-    return fetch("http://localhost:9000/pets", {
+    const url = baseUrl + "pets";
+    return fetch(url, {
         method: "GET",
         headers: {
             "Content-Type": "application/json"

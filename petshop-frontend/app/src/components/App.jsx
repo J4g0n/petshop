@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import { getPets, addPet } from '../repositories/petRepository';
+import { getPets, addPet, deletePet } from '../repositories/petRepository';
 import PetList from './PetList.jsx';
 import PetForm from './PetForm.jsx';
 
@@ -28,6 +28,14 @@ class App extends React.Component {
         });
     }
 
+    deletePet(id) {
+        deletePet(id).then(jsonValue => {
+            this.setState({
+                "pets": jsonValue
+            });
+        });
+    }
+
     onChangeName(event) {
         console.log("Name changed: ", event.target.value);
         this.setState({
@@ -49,7 +57,10 @@ class App extends React.Component {
 	maybeRenderPets(pets) {
 	    if (!_.isEmpty(pets)) {
             return (
-                <PetList pets={pets}/>
+                <PetList
+                    pets={pets}
+                    onDeletePet={this.deletePet.bind(this)}
+                />
             );
         }
     }
