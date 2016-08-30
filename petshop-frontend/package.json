@@ -1,5 +1,5 @@
 {
-  "name": "bottle-front",
+  "name": "petshop-frontend",
   "version": "1.0.0",
   "description": "Small app for bottle",
   "main": "index.js",
@@ -11,8 +11,10 @@
   "author": "J4g0n",
   "license": "ISC",
   "dependencies": {
+    "lodash": "^4.15.0",
     "react": "^15.3.1",
-    "react-dom": "^15.3.1"
+    "react-dom": "^15.3.1",
+    "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.13.2",
