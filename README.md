@@ -4,7 +4,6 @@
 
 ### Front-end
 =============
-
 ##### Choix techniques
 
 1. npm: gestionnaire de packet pour node et adaptable en tant que système de build
@@ -23,7 +22,6 @@
 
 ### Back-end
 ============
-
 ##### Choix techniques
 
 1. Play framework: framework web avec un fort partie pris stateless et facilitant le traitement de requêtes asynchrones. Play est en outre très comode lorsqu'il s'agit de mettre en place une API reste.Enfin, il fournit egalement tout un catalogue de bibliothèques cohérentes et un ensemble de plugins permettant d'accroître ses capacités comme les filtres.
