@@ -26,6 +26,7 @@ class App extends React.Component {
     addPet(form) {
         addPet(form).then(jsonValue => {
             this.setState({
+                "tab": "PETS",
                 "pets": jsonValue
             });
         });

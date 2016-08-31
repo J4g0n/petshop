@@ -1,7 +1,7 @@
 {
   "name": "petshop-frontend",
   "version": "1.0.0",
-  "description": "Small app for bottle",
+  "description": "Petshop application",
   "main": "index.js",
   "scripts": {
     "build": "./node_modules/webpack/bin/webpack.js",

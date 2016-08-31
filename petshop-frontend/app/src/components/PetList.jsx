@@ -6,7 +6,15 @@ class PetList extends React.Component {
 	    const { onDeletePet } = this.props;
         return (
             _.map(pets, (pet) => {
-                return <li key={pet.id}>{pet.name} <button onClick={() => onDeletePet(pet.id)}>Supprimer</button></li>;
+                return (
+                    <tr key={pet.id}>
+                        <td>{pet.name}</td>
+                        <td>{pet.age}</td>
+                        <td>{pet.gender}</td>
+                        <td>{pet.race}</td>
+                        <td><button onClick={() => onDeletePet(pet.id)}>Supprimer</button></td>
+                    </tr>
+                );
             })
         );
     }
@@ -14,9 +22,15 @@ class PetList extends React.Component {
 	render() {
 	    const { pets } = this.props;
 	 	return (
-	 	    <ul>
+	 	    <table>
+                <tr>
+                    <th>Nom</th>
+                    <th>Age</th>
+                    <th>Sexe</th>
+                    <th>Race</th>
+                </tr>
                 {this.renderPets(pets)}
-            </ul>
+            </table>
         );
 	}
 }
