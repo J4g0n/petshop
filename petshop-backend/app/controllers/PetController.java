@@ -9,6 +9,7 @@ import play.db.jpa.Transactional;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import utils.FormValidation;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -35,14 +36,7 @@ public class PetController extends Controller {
         } else {
             Pet pet = Json.fromJson(json, Pet.class);
 
-            if (
-                pet.name == null ||
-                pet.gender == null ||
-                pet.age > 250 ||
-                pet.age < 0 ||
-                pet.race == null
-                /* todo insert other rules here */
-            ) {
+            if (FormValidation.getInstance().isValidPet(pet)) {
                 return badRequest("Some fields are missing for [Pet] instance, cannot insert it into database");
             } else {
                 JPA.em().persist(pet);
