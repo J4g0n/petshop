@@ -12,12 +12,14 @@
 3. react: librairie de rendu front-end. React s'occupe d'afficher le contenu de l'application en compilant un DOM virtuel vers le DOM réel. React encourage l'immutabilité, la composition et la gestion de l'état applicatif de manière plus souple et intelligente.
 4. lessjs: précompilateur css. Less permet de rendre l'écriture du css moins lourde en offrant des outils proches de ceux d'un langage de programmation.
 5. fetchjs: librarie similaire à ajax mais dont l'API est plus simple d'utilisation.
+6. babel: transpileur javascript. Babel permet d'utiliser certaines syntaxes de la version es2015 du javascript, il améliore de ce fait la lisibilité du code.
 
 
 ##### Améliorations possibles
 
 1. Reduxjs: librarie se complémentant très bien avec React et permettant de gérer l'état global de l'application et le distribuer entre les principaux composants constiuant l'application. Redux simplifie la gestion de l'état applicatif qui est inpraticable dans une application React seule.
 2. Mise en place de tests front-end.
+3. Mise en place d'un routeur front-end avec react-routeur (ou une autre librairie).
 
 
 
