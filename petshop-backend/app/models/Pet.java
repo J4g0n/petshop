@@ -13,4 +13,10 @@ public class Pet {
 	public String id;
 
     public String name;
+
+	public int age;
+
+	public String gender;
+
+	public String race;
 }

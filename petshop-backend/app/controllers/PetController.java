@@ -6,6 +6,7 @@ import play.Logger;
 import play.data.FormFactory;
 import play.db.jpa.JPA;
 import play.db.jpa.Transactional;
+import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -32,13 +33,18 @@ public class PetController extends Controller {
         if(json == null) {
             return badRequest("Expecting Json data");
         } else {
-            String name = json.findPath("name").textValue();
+            Pet pet = Json.fromJson(json, Pet.class);
 
-            if(name == null) {
-                return badRequest("Missing parameter [name]");
+            if (
+                pet.name == null ||
+                pet.gender == null ||
+                pet.age > 250 ||
+                pet.age < 0 ||
+                pet.race == null
+                /* todo insert other rules here */
+            ) {
+                return badRequest("Some fields are missing for [Pet] instance, cannot insert it into database");
             } else {
-                Pet pet = new Pet();
-                pet.name = name;
                 JPA.em().persist(pet);
             }
         }

@@ -23,13 +23,17 @@ class PetList extends React.Component {
 	    const { pets } = this.props;
 	 	return (
 	 	    <table>
-                <tr>
-                    <th>Nom</th>
-                    <th>Age</th>
-                    <th>Sexe</th>
-                    <th>Race</th>
-                </tr>
-                {this.renderPets(pets)}
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Age</th>
+                        <th>Sexe</th>
+                        <th>Race</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {this.renderPets(pets)}
+                </tbody>
             </table>
         );
 	}

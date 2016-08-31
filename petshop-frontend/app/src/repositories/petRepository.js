@@ -3,6 +3,7 @@ import { baseUrl } from '../config';
 
 const validForm = (form) => {
     // todo ensure form validity here
+    const { name, age, gender, race } = form;
     return true;
 };
 
