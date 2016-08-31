@@ -1,15 +1,23 @@
 import 'whatwg-fetch';
 import { baseUrl } from '../config';
 
+const validForm = (form) => {
+    // todo ensure form validity here
+    return true;
+};
 
-export const addPet = (name) => {
+export const addPet = (form) => {
+    if (!validForm(form)) {
+        throw new Error("Invalid form datas: ", form);
+    }
+    console.log("PET FORM: ", form);
     const url = baseUrl + "addPet";
     return fetch(url, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({ "name": name }),
+        body: JSON.stringify(form),
         mode: "cors"
     }).then(
         response => {

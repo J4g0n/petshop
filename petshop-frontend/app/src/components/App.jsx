@@ -10,20 +10,21 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
         this.state = {
-            "newPetName": "",
             "tab": "PETS",
             "pets": []
         };
+	}
+
+	componentDidMount() {
         getPets().then(jsonValue => {
             this.setState({
                 "pets": jsonValue
             });
         });
-	}
+    }
 
-    addPet() {
-        const { newPetName } = this.state;
-        addPet(newPetName).then(jsonValue => {
+    addPet(form) {
+        addPet(form).then(jsonValue => {
             this.setState({
                 "pets": jsonValue
             });
@@ -38,25 +39,16 @@ class App extends React.Component {
         });
     }
 
-    onChangeName(event) {
-        this.setState({
-            "newPetName": event.target.value
-        });
-    }
-
     selectTab(tabName) {
         this.setState({
             "tab": tabName
         });
     }
 
-    renderPetForm() {
-        const { newPetName } = this.state;
+    renderPetForm(withAction) {
         return (
             <PetForm
-                name={newPetName}
-                onSubmit={this.addPet.bind(this)}
-                onChangeName={this.onChangeName.bind(this)}
+                onSubmit={withAction.bind(this)}
             />
         );
     }
@@ -88,7 +80,11 @@ class App extends React.Component {
             case "PETS":
                 return this.maybeRenderPets(pets);
             case "ADD_PET":
-                return this.renderPetForm();
+                return this.renderPetForm(this.addPet);
+            // todo enable this later if I have time
+            /*case "EDIT_PET":
+                return this.renderPetForm(this.editPet);
+            */
             default:
                 throw new Error("This tab doesn't exist: ", tab);
         }
