@@ -5,7 +5,7 @@ class PetForm extends React.Component {
         super(props);
         this.state = {
             "name": "",
-            "age": -1,
+            "age": 0,
             "race": "",
             "gender": "MALE"
         }

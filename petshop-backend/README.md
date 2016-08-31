@@ -1,3 +1,11 @@
-# Getting started with Play (Java)
+# Petshop-backend
 
-This project demonstrate how to create a simple CRUD application with Play. A screencast to the project exist on [playframework.com](http://playframework.com)
+Pré-requis:
+- java 8 
+- play framework version 2.5.6
+
+Lancer l'application:
+./activator run
+
+Lancer les tests:
+./activator test

@@ -1,6 +1,9 @@
-https://www.youtube.com/user/whobeatpinkled/videos
-http://jpsierens.com/tutorial-react-redux-webpack/
-http://blog.simonstrom.xyz/start-from-scratch-with-reactredux/
+# Petshop-frontend
 
-// complete guide
-http://blog.joanboixados.com/building-a-boilerplate-for-a-koa-redux-react-application-including-webpack-mocha-and-sass/ 
+Pré-requis:
+npm version 3.8.6
+node version 6.0.0
+
+Compiler l'application: npm run build
+
+Lancer l'application: npm run start

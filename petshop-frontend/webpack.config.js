@@ -27,6 +27,11 @@ module.exports = {
 				exclude: /node_modules/,
                 include: path.join(__dirname, "app"),
                 loader: "babel-loader"
+			},
+			{
+				test: /\.less$/,
+				exclude: /node_modules/,
+				loaders: ["style-loader", "css-loader", "less-loader"]
 			}
 		],
 	},

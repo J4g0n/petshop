@@ -35,7 +35,6 @@ public class PetController extends Controller {
             return badRequest("Expecting Json data");
         } else {
             Pet pet = Json.fromJson(json, Pet.class);
-            String name = pet.name;
 
             if (!FormValidation.getInstance().isValidName(pet.name)) {
                 return badRequest("Bad pet name: " + pet.name);

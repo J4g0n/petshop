@@ -2,8 +2,8 @@ import 'whatwg-fetch';
 import { baseUrl } from '../config';
 
 const validForm = (form) => {
-    // todo ensure form validity here
     const { name, age, gender, race } = form;
+    // todo implement same rules as on backend, don't have time right now
     return true;
 };
 
