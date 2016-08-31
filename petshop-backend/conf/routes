@@ -4,8 +4,6 @@
 
 # Home page
 GET     /                           controllers.Application.index()
-POST    /person                     controllers.Application.addPerson()
-GET     /persons                    controllers.Application.getPersons
 
 GET     /pets                       controllers.PetController.getPets
 POST    /addPetWithForm             controllers.PetController.addPetWithForm()

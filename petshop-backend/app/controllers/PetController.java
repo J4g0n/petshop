@@ -35,9 +35,16 @@ public class PetController extends Controller {
             return badRequest("Expecting Json data");
         } else {
             Pet pet = Json.fromJson(json, Pet.class);
+            String name = pet.name;
 
-            if (FormValidation.getInstance().isValidPet(pet)) {
-                return badRequest("Some fields are missing for [Pet] instance, cannot insert it into database");
+            if (!FormValidation.getInstance().isValidName(pet.name)) {
+                return badRequest("Bad pet name: " + pet.name);
+            } else if (!FormValidation.getInstance().isValidAge(pet.age)) {
+                return badRequest("Bad pet age: " + pet.age);
+            } else if (!FormValidation.getInstance().isValidGender(pet.gender)) {
+                return badRequest("Bad pet gender: " + pet.gender);
+            } else if (!FormValidation.getInstance().isValidName(pet.race)) {
+                return badRequest("Bad pet race: " + pet.race);
             } else {
                 JPA.em().persist(pet);
             }
@@ -53,20 +60,19 @@ public class PetController extends Controller {
         if(json == null) {
             return badRequest("Expecting Json data");
         } else {
-            String name = json.findPath("name").textValue();
+            Pet newPet = Json.fromJson(json, Pet.class);
 
-            if(name == null) {
+            if(FormValidation.getInstance().isValidPet(newPet)) {
                 return badRequest("Missing parameter [name]");
             } else {
-                Pet pet = JPA.em().find(Pet.class, id);
+                Pet oldPet = JPA.em().find(Pet.class, id);
 
-                if (pet != null) {
-                    Logger.debug("\nPet id: " + pet.id + "\nPet name: " + pet.name);
-                    pet.name = name;
-                    Logger.debug("\nPet id: " + pet.id + "\nPet name: " + pet.name);
-                    JPA.em().merge(pet);
-                } else {
+                if (oldPet == null) {
                     return badRequest("No object with id: " + id);
+                } else {
+                    oldPet.name = newPet.name;
+                    //Logger.debug("\nPet id: " + pet.id + "\nPet name: " + pet.name);
+                    JPA.em().merge(oldPet);
                 }
             }
         }

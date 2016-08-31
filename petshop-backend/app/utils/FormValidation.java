@@ -15,19 +15,19 @@ public class FormValidation {
     private FormValidation() {
     }
 
-    private boolean isValidName(String name) {
+    public boolean isValidName(String name) {
         return name != null && name.length() > 2 && name.length() < 30;
     }
 
-    private boolean isValidAge(int age) {
+    public boolean isValidAge(int age) {
         return age > 0 && age < 200;
     }
 
-    private boolean isValidGender(String gender) {
+    public boolean isValidGender(String gender) {
         return gender != null && (gender.equals("MALE") || gender.equals("FEMALE") || gender.equals("OTHER"));
     }
 
-    private boolean isValidRace(String race) {
+    public boolean isValidRace(String race) {
         return race != null && race.length() > 2 && race.length() < 30;
     }
 
