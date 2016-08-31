@@ -3,12 +3,15 @@ import _ from 'lodash';
 import { getPets, addPet, deletePet } from '../repositories/petRepository';
 import PetList from './PetList.jsx';
 import PetForm from './PetForm.jsx';
+import Menu from './Menu.jsx';
+
 
 class App extends React.Component {
 	constructor(props) {
 		super(props);
         this.state = {
             "newPetName": "",
+            "tab": "PETS",
             "pets": []
         };
         getPets().then(jsonValue => {
@@ -20,7 +23,6 @@ class App extends React.Component {
 
     addPet() {
         const { newPetName } = this.state;
-        console.log("Name saved: ", newPetName);
         addPet(newPetName).then(jsonValue => {
             this.setState({
                 "pets": jsonValue
@@ -37,9 +39,14 @@ class App extends React.Component {
     }
 
     onChangeName(event) {
-        console.log("Name changed: ", event.target.value);
         this.setState({
             "newPetName": event.target.value
+        });
+    }
+
+    selectTab(tabName) {
+        this.setState({
+            "tab": tabName
         });
     }
 
@@ -65,12 +72,33 @@ class App extends React.Component {
         }
     }
 
+    renderMenu() {
+        const { tab } = this.state;
+        return (
+            <Menu
+                selectTab={this.selectTab.bind(this)}
+                selectedTab={tab}
+            />
+        );
+    }
+
+    renderContent() {
+        const { pets, tab } = this.state;
+        switch (tab) {
+            case "PETS":
+                return this.maybeRenderPets(pets);
+            case "ADD_PET":
+                return this.renderPetForm();
+            default:
+                throw new Error("This tab doesn't exist: ", tab);
+        }
+    }
+
 	render() {
-	    const { pets } = this.state;
-	 	return (
+        return (
 	 	    <div>
-                {this.renderPetForm()}
-                {this.maybeRenderPets(pets)}
+                {this.renderMenu()}
+                {this.renderContent()}
             </div>
         );
 	}
