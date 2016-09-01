@@ -1,9 +1,17 @@
 @import "constant";
 
-#app-root {
-  .logo {
-    img {
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
-    }
+  color: @globalTextColor;
+
+  // todo we should create specific Component for this
+  .content {
+    display: flex;
+    flex-grow: 1;
+
+    background-color: @content-backcolor;
   }
 }

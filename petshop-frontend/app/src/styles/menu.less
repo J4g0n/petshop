@@ -2,21 +2,19 @@
 
 .menu {
   display: flex;
-  width: 150px;
-  margin-bottom: 5px;
   flex-direction: column;
-  align-items: flex-start;
-  color: @menu-color;
-  vertical-align: middle;
+  width: 150px;
+
+  background-color: @menu-backcolor;
 
   .tab {
-    box-sizing: border-box;
     cursor: pointer;
-    margin: 0 5px;
-    width: 100%;
     line-height: 50px;
+
+    text-align: center;
+
     &:hover {
-      border: 1px solid grey;
+      color: blue;
     }
   }
 }
