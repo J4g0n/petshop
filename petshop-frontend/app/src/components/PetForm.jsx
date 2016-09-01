@@ -1,5 +1,7 @@
 import React from 'react';
 
+require("../styles/petForm.less");
+
 class PetForm extends React.Component {
     constructor(props) {
         super(props);
@@ -39,15 +41,19 @@ class PetForm extends React.Component {
         const { onSubmit } = this.props;
 	    const { name, age, race, gender } = this.state;
 	 	return (
-	 	    <div>
-                Nom: <input placeholder="Entrer le nom de l'animal ici" value={name} onChange={this.onChangeName.bind(this)}/><br/>
-                Age: <input type="number" min={0} max={250} value={age} onChange={this.onChangeAge.bind(this)}/><br/>
-                Sexe: <select value={gender} onChange={this.onChangeGender.bind(this)}>
+	 	    <div className="pet-form">
+                <div>Nom</div>
+                <input placeholder="Entrer le nom de l'animal ici" value={name} onChange={this.onChangeName.bind(this)}/><br/>
+                <div>Age</div>
+                <input type="number" min={0} max={250} value={age} onChange={this.onChangeAge.bind(this)}/><br/>
+                <div>Sexe</div>
+                <select value={gender} onChange={this.onChangeGender.bind(this)}>
                     <option value="MALE">Mâle</option>
                     <option value="FEMALE">Femelle</option>
                     <option value="OTHER">Autre</option>
                 </select><br/>
-                Race: <input placeholder="Entrer la race de l'animal ici" value={race} onChange={this.onChangeRace.bind(this)}/><br/>
+                <div>Race:</div>
+                <input placeholder="Entrer la race de l'animal ici" value={race} onChange={this.onChangeRace.bind(this)}/><br/>
                 <button onClick={() => onSubmit(this.state)}>Ajouter animal</button>
             </div>
         );

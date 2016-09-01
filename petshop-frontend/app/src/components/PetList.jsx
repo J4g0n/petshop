@@ -1,6 +1,8 @@
 import React from 'react';
 import _ from 'lodash';
 
+require("../styles/petList.less");
+
 class PetList extends React.Component {
 	renderPets(pets) {
 	    const { onDeletePet } = this.props;
@@ -8,11 +10,11 @@ class PetList extends React.Component {
             _.map(pets, (pet) => {
                 return (
                     <tr key={pet.id}>
-                        <td>{pet.name}</td>
-                        <td>{pet.age}</td>
-                        <td>{pet.gender}</td>
-                        <td>{pet.race}</td>
-                        <td><button onClick={() => onDeletePet(pet.id)}>Supprimer</button></td>
+                        <td width="20%">{pet.name}</td>
+                        <td width="20%">{pet.age}</td>
+                        <td width="20%">{pet.gender}</td>
+                        <td width="20%">{pet.race}</td>
+                        <td width="20%"><button onClick={() => onDeletePet(pet.id)}>Supprimer</button></td>
                     </tr>
                 );
             })
