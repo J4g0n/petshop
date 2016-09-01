@@ -3,8 +3,11 @@ import _ from 'lodash';
 import { getPets, addPet, deletePet } from '../repositories/petRepository';
 import PetList from './PetList.jsx';
 import PetForm from './PetForm.jsx';
+import Header from './Header.jsx';
+import Footer from './Footer.jsx';
 import Menu from './Menu.jsx';
 
+require("../styles/app.less");
 
 class App extends React.Component {
 	constructor(props) {
@@ -93,9 +96,13 @@ class App extends React.Component {
 
 	render() {
         return (
-	 	    <div>
-                {this.renderMenu()}
-                {this.renderContent()}
+	 	    <div className="layout">
+                <Header />
+                <div className="content">
+                    {this.renderMenu()}
+                    {this.renderContent()}
+                </div>
+                <Footer />
             </div>
         );
 	}

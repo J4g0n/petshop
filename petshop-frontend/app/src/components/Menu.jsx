@@ -7,8 +7,8 @@ class Menu extends React.Component {
 	    const { selectTab } = this.props;
 	 	return (
 	 	    <div className="menu">
-                <div onClick={ () => selectTab("PETS") } className="pets-tab">Animaux</div>
-                <div onClick={ () => selectTab("ADD_PET") } className="add-pet-tab">Ajouter un animal</div>
+                <div onClick={ () => selectTab("PETS") } className="tab">Animaux</div>
+                <div onClick={ () => selectTab("ADD_PET") } className="tab">Ajouter un animal</div>
             </div>
         );
 	}
